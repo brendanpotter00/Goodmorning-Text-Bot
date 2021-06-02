@@ -52,9 +52,10 @@ while True or hour == 9 :
     second = datetime.datetime.now().second
 
     print("beginning of loop")
-    time.sleep(300) # 5minute delay
+    time.sleep(3) # 5minute delay
     print("after delay MIDDLE")
     if hour == 9 and minute < 15 :
+        print("SENDING TEXT")
         schedule.run_pending()
     
     print("END of loop")
