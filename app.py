@@ -13,7 +13,7 @@ alarm = datetime.time(9, 1, 1) #Hour, minute and second you want.
 def send_message():
     resp = requests.post('https://textbelt.com/text', {
         'phone' : marielNumber,
-        'message' : 'Goodmorning baby :) Im asleep rn. Have a good day!',
+        'message' : 'Goodmorning baby :) Im asleep rn, but have a good day!',
         'key' : 'textbelt'
     })
     print (resp.json())
@@ -29,9 +29,12 @@ print("the time is:")
 print(now.hour)
 hour = now.hour
 minute = now.minute
-second = now.second
+second = now.second 
 
-#testing
+""" hour = 9 
+minute = 16  """
+
+#testing NOT NEEDED
 def clock():
     while True:
         print(datetime.datetime.now().strftime("%H:%M:%S"), end="\r")
@@ -41,23 +44,22 @@ def clock():
 
 while True or hour == 9 :
     if hour == 9 and minute > 15 :
-        endPrgram = True
+        endProgram = True
+        print("END IS TRUE")
 
     hour = datetime.datetime.now().hour
     minute = datetime.datetime.now().minute
     second = datetime.datetime.now().second
 
-    
-
-    print("beg")
-    time.sleep(10)
-    print("after 1")
+    print("beginning of loop")
+    time.sleep(300) # 5minute delay
+    print("after delay MIDDLE")
     schedule.run_pending()
-    print("end")
+    print("END of loop")
     
     if (endProgram) :
-        print("closing program")
-        sys.exit
+        print("CLOSING PROGRAM")
+        quit()
 
 
 #test
