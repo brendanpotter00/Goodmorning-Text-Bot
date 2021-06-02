@@ -19,9 +19,9 @@ def send_message():
     print (resp.json())
 
 #main call
-schedule.every().day.at('09:00').do(send_message)
+#schedule.every().day.at('09:00').do(send_message)
 
-#schedule.every(1).seconds.do(send_message)
+schedule.every(1).seconds.do(send_message)
 
 #print('hello')
 now = datetime.datetime.now()
@@ -54,7 +54,9 @@ while True or hour == 9 :
     print("beginning of loop")
     time.sleep(300) # 5minute delay
     print("after delay MIDDLE")
-    schedule.run_pending()
+    if hour == 9 and minute < 15 :
+        schedule.run_pending()
+    
     print("END of loop")
     
     if (endProgram) :
