@@ -7,15 +7,22 @@ import sys
 
 mynumber = 3617396315
 marielNumber = 9493455203
-hourToSend = 9
+morningMessage = 'Good morning baby :) I am asleep right now, but dont worry Im dreaming about you. I hope you have a wonderful day.'
+
+nightMessage =  'Good afternoon baby :) Im probably working out right now, but dont worry, all the girls staring cant have me'
+
+hourToSend = 9 
 delayToLoop = 300
 endProgram = False
+loopCnt = 0
 alarm = datetime.time(9, 1, 1) #Hour, minute and second you want.
 
 def send_message():
     resp = requests.post('https://textbelt.com/text', {
         'phone' : marielNumber,
-        'message' : 'Good afternoon baby :) Im testing my program, but have a good rest of your day!',
+        
+        'message' : morningMessage,
+        
         'key' : 'textbelt'
     })
     print (resp.json())
@@ -45,6 +52,7 @@ def clock():
 #clock() """
 
 while True or hour == hourToSend :
+
     if hour == hourToSend and minute >= 59 :
         endProgram = True
         print("END IS TRUE")
@@ -60,6 +68,10 @@ while True or hour == hourToSend :
         print("SENDING TEXT")
         schedule.run_pending()
     
+    loopCnt += 1
+    print("LOOP COUNT IS:")
+    print(loopCnt)
+
     print("END of loop")
     
     if (endProgram) :
